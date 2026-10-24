@@ -52,22 +52,22 @@ export function calcularBinomial(n ,p ,x , condicion){
             break
         case "menor_igual":
             for(let i = 0; i <= x; i++){
-                probabilidadTotal = probabilidadPuntualBinomial(n, p, i)
+                probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }
             break
         case "menor":
             for(let i = 1; i < x; i++){
-                probabilidadTotal = probabilidadPuntualBinomial(n, p, i)
+                probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }
             break
         case "mayor_igual":
             for(let i = x; i <= n; i++){
-                probabilidadTotal = probabilidadPuntualBinomial(n, p, i)
+                probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }
             break
         case "mayor":
             for(let i = x + 1; i <= n; i++){
-                probabilidadTotal = probabilidadPuntualBinomial(n, p, i)
+                probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }
             break
         default:
