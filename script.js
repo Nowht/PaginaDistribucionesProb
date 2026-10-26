@@ -47,25 +47,25 @@ export function calcularBinomial(n ,p ,x , condicion){
     let probabilidadTotal = 0;
 
     switch(condicion){
-        case "igual":
+        case "=":
             probabilidadTotal = probabilidadPuntualBinomial(n, p, x) 
             break
-        case "menor_igual":
+        case "<=":
             for(let i = 0; i <= x; i++){
                 probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }
             break
-        case "menor":
+        case "<":
             for(let i = 1; i < x; i++){
                 probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }
             break
-        case "mayor_igual":
+        case ">=":
             for(let i = x; i <= n; i++){
                 probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }
             break
-        case "mayor":
+        case ">":
             for(let i = x + 1; i <= n; i++){
                 probabilidadTotal += probabilidadPuntualBinomial(n, p, i)
             }

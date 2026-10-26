@@ -32,7 +32,6 @@
                 </div>
             </aside>
             <main class="xl:col-10">
-
                 <nav class="navbar bg-1 fg-2 lg:d-block xl:d-none">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="#">Navbar</a>
@@ -66,61 +65,150 @@
                 </nav>
                 <h1 class="text-center md:text-start">Binomial</h1>
                 <p>Ingrese los datos necesarios</p>
+                <!--Formulario-->
                 <form action="">
-                    <!--Grid del formulario-->
-                    <div class="row g-5 justify-content-center">
-                        <!--N-->
-                        <div class="col-auto lg:col-3">
-                            <div class="row">
-                                <label for="n_ensayos" class="form-label col-auto">n:</label>
-                                <div class="col-auto">
-                                    <input type="number" class="form-control" id="n_ensayos">
+                    <div class="d-flex flex-column align-items-center gap-5">
+                        <!--Formulario Binomial-->
+                        <div class="row gap-5 justify-content-center">
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="bin-n" class="col-form-label col">Numero de ensayos (n)</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="bin-n">
                                 </div>
                             </div>
-                        </div>
-                        <!--p-->
-                        <div class="col-auto lg:col-3">
-                            <div class="row">
-                                <label for="p_exito" class="form-label col-auto">p:</label>
-                                <div class="col-auto">
-                                    <input type="number" class="form-control" id="p_exito">
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="bin-p" class="col-form-label col">Probabilidad de exito
+                                    (p)</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="bin-p">
                                 </div>
                             </div>
-                        </div>
-                        <!--x-->
-                        <div class="col-auto lg:col-3">
-                            <div class="row">
-                                <label for="n_exito" class="form-label col-auto">x:</label>
-                                <div class="col-auto">
-                                    <input type="number" class="form-control" id="n_exito">
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="bin-x" class="col-form-label col">Exitos buscados (x):</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="bin-x">
                                 </div>
                             </div>
-                        </div>
-                        <!--combobox-->
-                        <div class="col-auto lg:col-4">
-                            <div class="row">
-                                <label for="condicionBinomial" class="form-label col-auto">Probabilidad:</label>
+
+                            <div class="col-12 lg:col-4 row justify-content-center">
+                                <label for="bin-cond" class="col-form-label col-auto">Condición:</label>
                                 <div class="col-auto">
-                                    <select class="form-control" id="condicionBinomial">
+                                    <select class="form-control" id="bin-cond">
                                         <option selected>Elige uno</option>
-                                        <option value="igual">P(X = x)</option>
-                                        <option value="menor_igual">P(X ≤ x)</option>
-                                        <option value="menor">P(X < x)</option>
-                                        <option value="mayor_igual">P(X ≥ x)</option>
-                                        <option value="mayor">P(X < x)</option>
+                                        <option value="=">P(X = x)</option>
+                                        <option value="<=">P(X ≤ x)</option>
+                                        <option value="<">P(X < x)</option>
+                                        <option value=">=">P(X ≥ x)</option>
+                                        <option value=">">P(X < x)</option>
                                     </select>
                                 </div>
                             </div>
+
                         </div>
-                        <div class="col-auto">
-                            <button type="button" class="theme-primary btn-solid btn-styled" id="btnCalcular">
-                                Calcular
-                            </button>
+
+                        <!--Formulario Hipergeometrica-->
+                        <div class="row gap-5 justify-content-center d-none">
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="hip-N" class="col-form-label col">Poblacion Total (N):</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="hip-N">
+                                </div>
+                            </div>
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="hip-K" class="col-form-label col">Exitos en la poblacion
+                                    (K):</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="hip-K">
+                                </div>
+                            </div>
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="hip-n" class="col-form-label col">Tamaño de la muestra
+                                    (n):</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="hip-n">
+                                </div>
+                            </div>
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="hip-x" class="col-form-label col">Exitos en la muestra
+                                    (x):</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="hip-x">
+                                </div>
+                            </div>
+
+                            <div class="col-12 lg:col-4 row justify-content-center">
+                                <label for="hip-cond" class="col-form-label col-auto">Condición:</label>
+                                <div class="col-auto">
+                                    <select class="form-control" id="hip-cond">
+                                        <option selected>Elige uno</option>
+                                        <option value="=">P(X = x)</option>
+                                        <option value="<=">P(X ≤ x)</option>
+                                        <option value="<">P(X < x)</option>
+                                        <option value=">=">P(X ≥ x)</option>
+                                        <option value=">">P(X < x)</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
+
+                        <!--Formulario Normal-->
+                        <div class="row gap-5 justify-content-center d-none">
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="norm-mu" class="col-form-label col">Media (μ)</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="norm-mu">
+                                </div>
+                            </div>
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="norm-sigma" class="col-form-label col">Desviación estándar (σ)</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="norm-sigma">
+                                </div>
+                            </div>
+
+                            <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
+                                <label for="norm-x" class="col-form-label col">Valor de límite (x)</label>
+                                <div class="col">
+                                    <input type="number" class="form-control" id="norm-x">
+                                </div>
+                            </div>
+
+                            <div class="col-12 lg:col-4 row justify-content-center">
+                                <label for="norm-cond" class="col-form-label col-auto">Condición</label>
+                                <div class="col-auto">
+                                    <select class="form-control" id="norm-cond">
+                                        <option selected>Elige uno</option>
+                                        <option value="<=">P(X ≤ x)</option>
+                                        <option value=">=">P(X ≥ x)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="button" class="theme-primary btn-solid btn-styled" id="btnCalcular">
+                            Calcular
+                        </button>
                     </div>
                 </form>
+                <!--Tarjeta de resultados-->
                 <div>
                     <h3 id="resultado">Resultado:</h3>
+                    <div
+                        class="container d-flex flex-column align-items-center bg-3 border border-2 border-emphasized rounded">
+                        <p class="align-self-start fs-lg fw-bold mb-0">Probabilidad: </p>
+                        <span class="fs-3xl">0.3333</span>
+                    </div>
                 </div>
             </main>
         </div>
