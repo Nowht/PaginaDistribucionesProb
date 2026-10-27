@@ -12,29 +12,27 @@
 <body class="bg-1">
     <div class="container min-vh-100 md:d-flex md:flex-column md:justify-content-center">
         <div class="row">
-            <aside class="d-none xl:d-flex align-items-center col">
-                <div class="flex-column">
-                    <nav class="nav flex-column gap-1">
-                        <div class="text-uppercase text-muted small fw-bold mb-1">
-                            Distribuciones
-                        </div>
+            <aside class="d-none xl:d-flex align-items-center col" id="menu">
+                <nav class="nav flex-column gap-1">
+                    <div class="text-uppercase text-muted small fw-bold mb-1">
+                        Distribuciones
+                    </div>
 
-                        <a href="#binomial" class="text-decoration-none" id="tab-binomial">
-                            <p class="">Binomial</p>
-                        </a>
-                        <a href="#hipergeometrica" class="text-decoration-none" id="tab-hipergeometrica">
-                            <p>Hipergeométrica</p>
-                        </a>
-                        <a href="#normal" class="text-decoration-none" id="tab-normal">
-                            <p>Normal</p>
-                        </a>
-                    </nav>
-                </div>
+                    <a href="#binomial" class="text-decoration-none" id="tab-binomial">
+                        <p class="">Binomial</p>
+                    </a>
+                    <a href="#hipergeometrica" class="text-decoration-none" id="tab-hipergeometrica">
+                        <p>Hipergeométrica</p>
+                    </a>
+                    <a href="#normal" class="text-decoration-none" id="tab-normal">
+                        <p>Normal</p>
+                    </a>
+                </nav>
             </aside>
             <main class="xl:col-10">
                 <nav class="navbar bg-1 fg-2 lg:d-block xl:d-none">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Navbar</a>
+                        <a class="navbar-brand" href="#">Seleccione una opcion -></a>
                         <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer"
                             data-bs-target="#navbarNavMenu" aria-controls="navbarNavMenu" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -47,29 +45,29 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="drawer"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="drawer-body">
+                            <div class="drawer-body" id="menu-movil">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Binomial</a>
+                                        <a class="nav-link" href="#binomial" data-bs-dismiss="drawer">Binomial</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Hipergeométrica</a>
+                                        <a class="nav-link" href="#hipergeometrica" data-bs-dismiss="drawer">Hipergeométrica</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Normal</a>
+                                        <a class="nav-link" href="#normal" data-bs-dismiss="drawer">Normal</a>
                                     </li>
                                 </ul>
                             </div>
                         </dialog>
                     </div>
                 </nav>
-                <h1 class="text-center md:text-start">Binomial</h1>
+                <h1 class="text-center md:text-start" id="titulo">Binomial</h1>
                 <p>Ingrese los datos necesarios</p>
                 <!--Formulario-->
                 <form action="">
                     <div class="d-flex flex-column align-items-center gap-5">
                         <!--Formulario Binomial-->
-                        <div class="row gap-5 justify-content-center">
+                        <div id="inputs-binomial" class="dist-form row gap-5 justify-content-center">
 
                             <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
                                 <label for="bin-n" class="col-form-label col">Numero de ensayos (n)</label>
@@ -110,7 +108,7 @@
                         </div>
 
                         <!--Formulario Hipergeometrica-->
-                        <div class="row gap-5 justify-content-center d-none">
+                        <div id="inputs-hipergeometrica" class="dist-form row gap-5 justify-content-center d-none">
 
                             <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
                                 <label for="hip-N" class="col-form-label col">Poblacion Total (N):</label>
@@ -160,7 +158,7 @@
                         </div>
 
                         <!--Formulario Normal-->
-                        <div class="row gap-5 justify-content-center d-none">
+                        <div id="inputs-normal" class="dist-form row gap-5 justify-content-center d-none">
 
                             <div class="col-auto lg:col-3 row lg:row-cols-1 align-items-center">
                                 <label for="norm-mu" class="col-form-label col">Media (μ)</label>
@@ -207,7 +205,7 @@
                     <div
                         class="container d-flex flex-column align-items-center bg-3 border border-2 border-emphasized rounded">
                         <p class="align-self-start fs-lg fw-bold mb-0">Probabilidad: </p>
-                        <span class="fs-3xl">0.3333</span>
+                        <span class="fs-3xl fw-bold" id="r-1">0.3333</span>
                     </div>
                 </div>
             </main>
