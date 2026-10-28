@@ -1,60 +1,95 @@
-import { calcularBinomial } from './script.js'
+import {
+    calcularBinomial,
+    calcularHipergeometrica,
+    calcularNormal
+} from "./script.js";
 
-const btn = document.getElementById('btnCalcular')
+//Variables y funciones para manejar la interfaz de usuario
+const botonCalcular = document.getElementById("btnCalcular");
+const salidaProbabilidad = document.getElementById("r-1");
+const nombresDistribuciones = {
+    binomial: "Binomial",
+    hipergeometrica: "Hipergeométrica",
+    normal: "Normal"
+};
+let distribucionActual = "binomial";
 
-const ensayos = document.getElementById('bin-n')
+// Función para mostrar la sección de la distribución seleccionada
+function mostrarDistribucion(distribucion) {
+    distribucionActual = distribucion;
 
-btn.addEventListener('click', () => {
+    //Se ocultan todas las secciones de entrada y se muestra solo la correspondiente a la distribución seleccionada
+    document.querySelectorAll(".dist-form").forEach((formulario) => {
+        formulario.classList.toggle(
+            "d-none",
+            formulario.id !== `inputs-${distribucion}`
+        );
+    });
+
+    document.getElementById("titulo").textContent =
+        nombresDistribuciones[distribucion];
+}
+
+// Los menús de escritorio y móvil comparten el mismo comportamiento.
+document.querySelectorAll("#menu a, #menu-movil a").forEach((enlace) => {
+    enlace.addEventListener("click", (evento) => {
+        evento.preventDefault();
+        mostrarDistribucion(enlace.hash.slice(1));
+    });
+});
+
+// lee el valor numérico de un input y lo devuelve como número
+function leerNumero(id) {
+    return document.getElementById(id).valueAsNumber;
+}
+
+// Muestra la probabilidad calculada en el elemento de salida
+function mostrarProbabilidad(probabilidad) {
+    salidaProbabilidad.textContent = Number(probabilidad).toFixed(4);
+}
+
+botonCalcular.addEventListener("click", () => {
     try {
-        const n = parseInt(ensayos.value)
-        const p = parseFloat(document.getElementById('bin-p').value)
-        const x = parseInt(document.getElementById('bin-x').value)
-        const condicion = document.getElementById('bin-cond').value
+        switch (distribucionActual) {
+            case "binomial": {
+                const resultado = calcularBinomial(
+                    leerNumero("bin-n"),
+                    leerNumero("bin-p"),
+                    leerNumero("bin-x"),
+                    document.getElementById("bin-cond").value
+                );
 
-        const res = calcularBinomial(n, p, x, condicion)
+                mostrarProbabilidad(resultado.probabilidad);
+                break;
+            }
+            case "hipergeometrica": {
+                const resultado = calcularHipergeometrica(
+                    leerNumero("hip-N"),
+                    leerNumero("hip-K"),
+                    leerNumero("hip-n"),
+                    leerNumero("hip-x"),
+                    document.getElementById("hip-cond").value
+                );
 
+                mostrarProbabilidad(resultado.probabilidad);
+                break;
+            }
+            case "normal": {
+                const resultado = calcularNormal(
+                    leerNumero("norm-mu"),
+                    leerNumero("norm-sigma"),
+                    leerNumero("norm-n"),
+                    leerNumero("norm-x"),
+                    document.getElementById("norm-cond").value
+                );
 
-        document.getElementById('r-1').textContent = res.probabilidad
-
+                mostrarProbabilidad(resultado.probabilidad);
+                break;
+            }
+            default:
+                throw new Error("La distribución seleccionada no es válida.");
+        }
     } catch (error) {
-        alert("Error: " + error.message)
+        alert(`Error: ${error.message}`);
     }
-
-})
-
-const navLinks = document.querySelectorAll('#menu a')
-
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const targetId = link.getAttribute('href').substring(1)
-
-        document.querySelectorAll('.dist-form').forEach(form => {
-            form.classList.add('d-none')
-        })
-
-        document.getElementById('titulo').textContent = targetId.at(0).toUpperCase() + targetId.slice(1)
-
-        document.getElementById(`inputs-${targetId}`).classList.remove('d-none')
-    })
-})
-
-const navLinksMobile = document.querySelectorAll('#menu-movil a')
-
-navLinksMobile.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault()
-
-        const targetId = link.getAttribute('href').substring(1)
-
-        document.querySelectorAll('.dist-form').forEach(form => {
-            form.classList.add('d-none')
-        })
-
-        document.getElementById('titulo').textContent = targetId.at(0).toUpperCase() + targetId.slice(1)
-
-        document.getElementById(`inputs-${targetId}`).classList.remove('d-none')
-
-    })
-})
+});
