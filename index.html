@@ -18,13 +18,13 @@
                         Distribuciones
                     </div>
 
-                    <a href="#binomial" class="text-decoration-none" id="tab-binomial">
-                        <p class="">Binomial</p>
+                    <a href="#binomial" class="text-decoration-none theme-secondary underline-offset-2 underline-20 hover:underline-100" id="tab-binomial">
+                        <p>Binomial</p>
                     </a>
-                    <a href="#hipergeometrica" class="text-decoration-none" id="tab-hipergeometrica">
+                    <a href="#hipergeometrica" class="text-decoration-none theme-secondary underline-offset-2 underline-20 hover:underline-100" id="tab-hipergeometrica">
                         <p>Hipergeométrica</p>
                     </a>
-                    <a href="#normal" class="text-decoration-none" id="tab-normal">
+                    <a href="#normal" class="text-decoration-none theme-secondary underline-offset-2 underline-20 hover:underline-100" id="tab-normal">
                         <p>Normal</p>
                     </a>
                 </nav>
@@ -32,38 +32,41 @@
             <main class="xl:col-10">
                 <nav class="navbar bg-1 fg-2 lg:d-block xl:d-none">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Seleccione una opcion -></a>
-                        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer"
-                            data-bs-target="#navbarNavMenu" aria-controls="navbarNavMenu" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                        <p class="navbar-brand m-0" href="#">Mas opciones -></p>
+                        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="dialog"
+                            data-bs-target="#mobileDialog">
                             <span class="navbar-toggler-icon" aria-hidden="true"></span>
                         </button>
-                        <dialog class="drawer drawer-end" tabindex="-1" id="navbarNavMenu"
-                            aria-labelledby="navbarNavMenuLabel">
-                            <div class="drawer-header">
-                                <h5 class="drawer-title" id="navbarNavMenuLabel">Distribuciones</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="drawer"
+                        <dialog class="dialog" id="mobileDialog">
+                            <div class="dialog-header">
+                                <h1 class="dialog-title">Seleccione una opcion</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="dialog"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="drawer-body" id="menu-movil">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#binomial" data-bs-dismiss="drawer">Binomial</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#hipergeometrica"
-                                            data-bs-dismiss="drawer">Hipergeométrica</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#normal" data-bs-dismiss="drawer">Normal</a>
-                                    </li>
-                                </ul>
+                            <div class="dialog-body" id="menu-movil">
+                                <nav class="nav flex-column gap-1">
+                                    <a href="#binomial"
+                                        class="text-decoration-none theme-inverse underline-offset-2 underline-20 hover:underline-100"
+                                        id="tab-binomial-mobile" data-bs-dismiss="dialog">
+                                        <p class="">Binomial</p>
+                                    </a>
+                                    <a href="#hipergeometrica"
+                                        class="text-decoration-none theme-inverse underline-offset-2 underline-20 hover:underline-100"
+                                        id="tab-hipergeometrica-mobile" data-bs-dismiss="dialog">
+                                        <p>Hipergeométrica</p>
+                                    </a>
+                                    <a href="#normal"
+                                        class="text-decoration-none theme-inverse underline-offset-2 underline-20 hover:underline-100"
+                                        id="tab-normal-mobile" data-bs-dismiss="dialog">
+                                        <p>Normal</p>
+                                    </a>
+                                </nav>
                             </div>
                         </dialog>
                     </div>
                 </nav>
                 <h1 class="text-center text-capitalize md:text-start" id="titulo">Binomial</h1>
-                <p>Ingrese los datos necesarios</p>
+                <p class="my-4">Ingrese los datos necesarios</p>
                 <!--Formulario-->
                 <form action="">
                     <div class="d-flex flex-column align-items-center gap-5">
@@ -202,16 +205,16 @@
 
                         </div>
 
-                        <button type="button" class="theme-primary btn-solid btn-styled" id="btnCalcular">
+                        <button type="button" class="btn-solid theme-secondary" id="btnCalcular">
                             Calcular
                         </button>
                     </div>
                 </form>
                 <!--Tarjeta de resultados-->
                 <div>
-                    <h3 id="resultado">Resultado:</h3>
+                    <h3 class="fs-lg fw-bold my-5">Resultado:</h3>
                     <div
-                        class="container d-flex flex-column align-items-center bg-3 border border-2 border-emphasized rounded">
+                        class="container d-flex flex-column align-items-center bg-3 border border-2 border-emphasized rounded py-3">
                         <p class="align-self-start fs-lg fw-bold mb-0">Probabilidad: </p>
                         <span class="fs-3xl fw-bold" id="r-1">0.0000</span>
                     </div>
