@@ -4,6 +4,8 @@ import {
     calcularNormal
 } from "./script.js";
 
+import { generarPuntosBinomial, generarPuntosHipergeometrica, generarPuntosNormal, renderizarGrafica } from "./grafica.js";
+
 //Variables y funciones para manejar la interfaz de usuario
 const botonCalcular = document.getElementById("btnCalcular");
 const salidaProbabilidad = document.getElementById("r-1");
@@ -52,38 +54,80 @@ botonCalcular.addEventListener("click", () => {
     try {
         switch (distribucionActual) {
             case "binomial": {
+                const x = leerNumero("bin-x");
+                const condicion = document.getElementById("bin-cond").value;
                 const resultado = calcularBinomial(
                     leerNumero("bin-n"),
                     leerNumero("bin-p"),
-                    leerNumero("bin-x"),
-                    document.getElementById("bin-cond").value
+                    x,
+                    condicion
                 );
 
                 mostrarProbabilidad(resultado.probabilidad);
+
+                // 2. INVOCAR LA GENERACIÓN Y ACTUALIZACIÓN DE LA GRÁFICA
+                const puntos = generarPuntosBinomial(
+                    leerNumero("bin-n"),
+                    leerNumero("bin-p")
+                );
+                renderizarGrafica(puntos.labels, puntos.data, 'bar', {
+                    x,
+                    condicion,
+                    probabilidad: resultado.probabilidad
+                });
+
                 break;
             }
             case "hipergeometrica": {
+                const x = leerNumero("hip-x");
+                const condicion = document.getElementById("hip-cond").value;
                 const resultado = calcularHipergeometrica(
                     leerNumero("hip-N"),
                     leerNumero("hip-K"),
                     leerNumero("hip-n"),
-                    leerNumero("hip-x"),
-                    document.getElementById("hip-cond").value
+                    x,
+                    condicion
                 );
 
                 mostrarProbabilidad(resultado.probabilidad);
+
+                // Invocación de la generación y actualización de la gráfica para Hipergeométrica
+                const puntosHiper = generarPuntosHipergeometrica(
+                    leerNumero("hip-N"),
+                    leerNumero("hip-K"),
+                    leerNumero("hip-n")
+                );
+                renderizarGrafica(puntosHiper.labels, puntosHiper.data, 'bar', {
+                    x,
+                    condicion,
+                    probabilidad: resultado.probabilidad
+                });
                 break;
             }
             case "normal": {
+                const x = leerNumero("norm-x");
+                const condicion = document.getElementById("norm-cond").value;
                 const resultado = calcularNormal(
                     leerNumero("norm-mu"),
                     leerNumero("norm-sigma"),
                     leerNumero("norm-n"),
-                    leerNumero("norm-x"),
-                    document.getElementById("norm-cond").value
+                    x,
+                    condicion
                 );
 
                 mostrarProbabilidad(resultado.probabilidad);
+
+                // Invocación de la generación y actualización de la gráfica para Normal
+                const puntosNormal = generarPuntosNormal(
+                    leerNumero("norm-mu"),
+                    leerNumero("norm-sigma"),
+                    leerNumero("norm-n")
+                );
+                renderizarGrafica(puntosNormal.labels, puntosNormal.data, 'line', {
+                    x,
+                    condicion,
+                    probabilidad: resultado.probabilidad
+                });
                 break;
             }
             default:

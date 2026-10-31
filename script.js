@@ -1,5 +1,5 @@
 // Calcula log(n sobre k) para evitar desbordamientos al calcular combinaciones grandes.
-function logCombinaciones(n, k) {
+export function logCombinaciones(n, k) {
     if (k < 0 || k > n) return Number.NEGATIVE_INFINITY;
 
     const limite = Math.min(k, n - k);
