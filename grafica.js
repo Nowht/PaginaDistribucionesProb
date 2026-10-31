@@ -135,15 +135,15 @@ export function renderizarGrafica(labeles, datos, tipoGrafica = 'bar', resaltado
             },
             scales: {
                 x: {
-                    grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                    grid: { color: 'rgba(255,255,255, 0.1)' },
                     ticks: {
-                        color: 'rgba(0, 0, 0, 0.7)',
+                        color: 'rgb(255,255,255)',
                         callback: tipoGrafica === 'line'
                             ? (valor) => Number(labeles[valor]).toFixed(2)
                             : undefined
                     }
                 },
-                y: { grid: { color: 'rgba(0, 0, 0, 0.1)' }, ticks: { color: 'rgba(0, 0, 0, 0.7)' } }
+                y: { grid: { color: 'rgba(255,255,255, 0.1)' }, ticks: { color: 'rgb(255,255,255)' } }
             }
         }
     });
